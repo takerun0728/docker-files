@@ -37,6 +37,7 @@ RUN pip3 install torch==1.8.1+cu111 torchvision==0.9.1+cu111 torchaudio==0.8.1 -
 RUN pip3 install pandas
 RUN pip3 install cupy
 RUN pip3 install pymc3
+RUN pip3 install gmpy2
 
 RUN apt-get update
 RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -

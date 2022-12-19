@@ -23,34 +23,13 @@ RUN apt-get update
 RUN apt-get install -y python3-pip
 RUN apt-get install -y wget
 
-RUN ln -s /usr/local/cuda/lib64/libcusolver.so.11 /usr/local/cuda/lib64/libcusolver.so.10
 RUN apt-get install -y python3-tk
 RUN pip3 install -U pip
-#RUN pip3 install tensorflow
 RUN pip3 install matplotlib
 RUN pip3 install gym
-RUN pip3 install pylint
-RUN pip3 install jupyterlab
-RUN pip3 install jedi==0.17.2
-RUN pip3 install pyyaml
 RUN pip3 install torch==1.8.1+cu111 torchvision==0.9.1+cu111 torchaudio==0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
 RUN pip3 install pandas
 RUN pip3 install cupy
-RUN pip3 install pymc3
-RUN pip3 install gmpy2
-
-RUN apt-get update
-RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-RUN apt-get install -y nodejs
-RUN pip3 install xeus-python
-RUN jupyter labextension install @jupyterlab/debugger
-
-RUN pip3 install openjij
-RUN pip3 install pyqubo
-RUN pip3 install networkx
-
-RUN apt-get install -y libmuparser-dev
-RUN apt-get install -y portaudio19-dev
 
 #Make normal user
 ARG uid=1000

@@ -28,6 +28,7 @@ RUN pip3 install tensornetwork
 RUN pip3 install openjij
 RUN pip3 install pyqubo
 RUN pip3 install scikit-learn
+RUN pip3 install pulp
 
 RUN apt-get update
 RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -

@@ -36,7 +36,7 @@ RUN pip3 install qiskit-aer-gpu
 RUN pip3 install pylatexenc
 
 RUN apt-get update
-RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+#RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 RUN apt-get install -y nodejs
 RUN pip3 install xeus-python
 

@@ -1,10 +1,9 @@
-FROM nvidia/cuda:11.7.1-devel-ubuntu20.04
+FROM nvidia/cuda:12.2.0-devel-ubuntu22.04
 
 ENV DEBCONF_NOWARNINGS=yes
 ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=1
 ENV DEBIAN_FRONTEND=noninteractive
 
-#Base
 RUN apt-get update
 RUN apt-get install -y vim bash-completion net-tools lsb-release gdb curl sudo
 RUN apt-get install -y python3-pip
@@ -19,8 +18,6 @@ RUN pip3 install pylint
 RUN pip3 install jupyterlab
 RUN pip3 install jedi==0.17.2
 RUN pip3 install pyyaml
-#RUN pip3 install torch==1.8.1+cu111 torchvision==0.9.1+cu111 torchaudio==0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
-
 RUN pip3 install torch
 RUN pip3 install pandas
 RUN pip3 install cupy
@@ -34,10 +31,6 @@ RUN pip3 install pulp
 RUN pip3 install qiskit
 RUN pip3 install qiskit-aer-gpu
 RUN pip3 install pylatexenc
-
-RUN apt-get update
-#RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-RUN apt-get install -y nodejs
 RUN pip3 install xeus-python
 
 #Make normal user
@@ -50,6 +43,7 @@ RUN gpasswd -a ${user} sudo
 RUN echo ${user}:${passwd} | chpasswd
 USER ${user}
 WORKDIR "/home/${user}"
+RUN echo "export LD_LIBRARY_PATH='$LD_LIBRARY_PATH:/usr/local/lib/python3.10/dist-packages/cuquantum/lib'" >> ~/.bashrc
 
 ENV NVIDIA_VISIBLE_DEVICES ${NVIDIA_VISIBLE_DEVICES:-all}
 ENV NVIDIA_DRIVER_CAPABILITIES ${NVIDIA_DRIVER_CAPABILITIES:+$NVIDIA_DRIVER_CAPABILITIES,}graphics

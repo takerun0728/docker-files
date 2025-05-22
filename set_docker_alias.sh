@@ -1,4 +1,4 @@
-alias ndoc_run="docker run --runtime=nvidia \
+alias ndoc_run="docker run --gpus=all \
 -it \
 --net=host \
 --cap-add=SYS_PTRACE \
@@ -12,7 +12,7 @@ alias ndoc_run="docker run --runtime=nvidia \
 -e DISPLAY=$DISPLAY \
 -e NVIDIA_DRIVER_CAPABILITIES=all"
 
-alias wsldoc_run="docker run --runtime=nvidia \
+alias wsldoc_run="docker run --gpus=all \
 -it \
 --net=host \
 --cap-add=SYS_PTRACE \

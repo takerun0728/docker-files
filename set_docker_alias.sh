@@ -4,7 +4,7 @@ alias ndoc_run="docker run --gpus all \
 --cap-add=SYS_PTRACE \
 --privileged \
 -v /run/user:/run/user \
--v $HOME/vscode_remotee:/home/ubuntu/.vscode-server \
+-v $HOME/vscode_remote:/home/ubuntu/.vscode-server \
 -v $HOME/.gitconfig:/home/ubuntu/.gitconfig \
 -v $HOME/docker_share:/home/ubuntu/share \
 -v /tmp/.X11-unix:/tmp/.X11-unix \

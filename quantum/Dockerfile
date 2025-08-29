@@ -33,6 +33,7 @@ RUN pip3 install mip
 RUN pip3 install ipykernel
 RUN pip3 install qpsolvers
 RUN pip3 install quadprog
+RUN pip3 install cudaq
 
 RUN if [ "$ENBL_GPU" = "yes" ]; then \
       pip3 install qiskit-aer-gpu; \

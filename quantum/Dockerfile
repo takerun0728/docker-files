@@ -5,7 +5,7 @@ FROM ${BASE_IMAGE}
 
 RUN apt-get update
 RUN apt-get install -y vim bash-completion net-tools lsb-release gdb curl sudo wget
-RUN apt-get install -y python3-pip python3-tk python3-venv
+RUN apt-get install -y python3-pip python3-tk python3-venv libffi-dev
 
 RUN python3 -m venv /opt/venv
 ENV PATH "/opt/venv/bin:$PATH"
@@ -29,8 +29,12 @@ RUN pip3 install pulp
 RUN pip3 install qiskit
 RUN pip3 install pylatexenc
 RUN pip3 install xeus-python
+RUN pip3 install mip
+RUN pip3 install ipykernel
+RUN pip3 install qpsolvers
+RUN pip3 install quadprog
 
-RUN if ["$ENBL_GPU" = "yes"]; then \
+RUN if [ "$ENBL_GPU" = "yes" ]; then \
       pip3 install qiskit-aer-gpu; \
     fi
 
@@ -40,7 +44,7 @@ ARG UID=1000
 ARG USER=ubuntu
 ARG PASSWD=ubuntu
 
-RUN if ["$USERADD" = "yes"]; then \
+RUN if [ "$USERADD" = "yes" ]; then \
       useradd -m -u ${UID} ${USER}; \
     fi
 RUN gpasswd -a ${USER} sudo

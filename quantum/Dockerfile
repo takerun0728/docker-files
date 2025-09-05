@@ -33,6 +33,7 @@ RUN pip3 install mip
 RUN pip3 install ipykernel
 RUN pip3 install qpsolvers
 RUN pip3 install quadprog
+RUN pip3 install cudaq
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential gfortran pkg-config \

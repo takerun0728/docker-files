@@ -34,18 +34,8 @@ RUN pip3 install ipykernel
 RUN pip3 install qpsolvers
 RUN pip3 install quadprog
 RUN pip3 install cudaq
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential gfortran pkg-config \
-    libblas-dev liblapack-dev \
-    coinor-libipopt-dev \
- && rm -rf /var/lib/apt/lists/*
-
-RUN python3 -m ensurepip --upgrade \
- && python3 -m pip install --upgrade pip setuptools wheel
-RUN python3 -m pip install "Cython<3" numpy
-RUN python3 -m pip install --no-build-isolation cyipopt
-RUN pip install jax jaxlib
+RUN pip3 install qpsolvers[clarabel,daqp,proxqp,scs,osqp,qpalm]
+RUN pip3 install casadi
 
 RUN if [ "$ENBL_GPU" = "yes" ]; then \
       pip3 install qiskit-aer-gpu; \

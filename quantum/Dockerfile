@@ -1,8 +1,7 @@
 ARG BASE_IMAGE=ubuntu:24.04
-ARG ENBL_GPU=no
-
 FROM ${BASE_IMAGE}
 
+ARG ENBL_GPU=no
 RUN apt-get update
 RUN apt-get install -y vim bash-completion net-tools lsb-release gdb curl sudo wget
 RUN apt-get install -y python3-pip python3-tk python3-venv libffi-dev
@@ -36,9 +35,10 @@ RUN pip3 install quadprog
 RUN pip3 install cudaq
 RUN pip3 install qpsolvers[clarabel,daqp,proxqp,scs,osqp,qpalm]
 RUN pip3 install casadi
+RUN pip3 install pennylane
 
 RUN if [ "$ENBL_GPU" = "yes" ]; then \
-      pip3 install qiskit-aer-gpu; \
+      pip3 install pennylane-lightning[gpu]; \
     fi
 
 #Make normal user

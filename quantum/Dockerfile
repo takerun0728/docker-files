@@ -17,6 +17,7 @@ RUN pip3 install gym
 RUN pip3 install pylint
 RUN pip3 install pyyaml
 RUN pip3 install torch
+RUN pip3 install torch-geometric
 RUN pip3 install pandas
 RUN pip3 install pymc
 RUN pip3 install gmpy2
@@ -36,6 +37,7 @@ RUN pip3 install cudaq
 RUN pip3 install qpsolvers[clarabel,daqp,proxqp,scs,osqp,qpalm]
 RUN pip3 install casadi
 RUN pip3 install pennylane
+RUN pip3 install gurobipy
 
 RUN if [ "$ENBL_GPU" = "yes" ]; then \
       pip3 install pennylane-lightning[gpu]; \

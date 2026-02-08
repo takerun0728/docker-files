@@ -38,6 +38,7 @@ RUN pip3 install qpsolvers[clarabel,daqp,proxqp,scs,osqp,qpalm]
 RUN pip3 install casadi
 RUN pip3 install pennylane
 RUN pip3 install gurobipy
+RUN pip3 install tensorboard
 
 RUN if [ "$ENBL_GPU" = "yes" ]; then \
       pip3 install pennylane-lightning[gpu]; \

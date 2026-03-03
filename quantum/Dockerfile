@@ -5,6 +5,7 @@ ARG ENBL_GPU=no
 RUN apt-get update
 RUN apt-get install -y vim bash-completion net-tools lsb-release gdb curl sudo wget
 RUN apt-get install -y python3-pip python3-tk python3-venv libffi-dev
+RUN apt-get install -y tmux
 
 RUN python3 -m venv /opt/venv
 ENV PATH "/opt/venv/bin:$PATH"
